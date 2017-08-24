@@ -4,17 +4,98 @@
 
 <link href = "file:///home/odroid/jj/RSVPform.html">
 <title>Confirmation Page</title>
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<meta charset="utf-8"/>
+
+<style>
+#container{
+	background-color: skyblue;
+	text-align: center;
+
+}
+#loop{
+	background-color: skyblue;
+	text-align: center;
+}
+table{
+	width:200px;
+	border: solid;
+	border-width: 10px;
+	font-size: 20px;
+}
+td{
+	border: solid;
+}
+</style>
+
 <script>
 function myFunction() {
-    var str = location.search;
-    var res = str.split(" ");
-    document.getElementById("RSVP").innerHTML = res;
+    var string = location.search.slice(1).split("&");
+	var firstname =  string[0].split("=");
+	var lastname = string [1].split("=");
+	var Cellnumber = string [2].split("=");
+	var Email = string[3].split("=");
+	var Dietary = string[4].split("=");
+	var OtherDietary = string[5].split("=");
+	var inputType = string[6].split("=");
+	document.getElementById("firstname").innerHTML = firstname[1];
+	document.getElementById("lastname").innerHTML = lastname[1];
+	document.getElementById("Cellnumber").innerHTML = Cellnumber[1];
+	document.getElementById("Email").innerHTML = Email[1].replace("%40","@");
+	document.getElementById("Dietary").innerHTML = Dietary[0];
+	document.getElementById("Other Dietary").innerHTML = OtherDietary[1].replace("+"," ");
+	document.getElementById("Bringingsomeone").innerHTML = inputType[1];
 }
 </script>
+
+
 </head>
 
-<body>
-<h1>Thank You!</h1>
+<body onload="myFunction()">
+
+<div class="container" id="container">
+	<h1 id="intro">Thank You!</h1>
+	<h3>See you on the night of the kings and queens.</h3>
+	<p id="POP"></p>
+</div>
+<center><img src="https://tse1.mm.bing.net/th?id=OIP.oKYkk7AYgaU9xiE4o9MtkAEsCH&w=300&h=135&c=7&qlt=90&o=4&pid=1.7"/></centr>
+<div class="container" id="container">
+	
+	<center><table id="table">
+		<tr>
+			<th>Field</th>
+			<th>Input</th>
+		</tr>
+		<tr>
+			<td>firstname</td>
+			<td><span id="firstname"></td>
+		</tr>
+		<tr>
+			<td>lastname</td>
+			<td><span id="lastname"><span></td>
+		</tr>
+		<tr>
+			<td>Cellnumber</td>
+			<td><span id="Cellnumber"><span></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><span id="Email"><span></td>
+		</tr>
+		<tr>
+			<td>Dietary</td>
+			<td><span id="Dietary"><span></td>
+		</tr>
+		<tr>
+			<td>Other Dietary</td>
+			<td><span id="Other Dietary"><span></td>
+		</tr> 
+		<tr>
+			<td>Bringingsomeone?</td>
+			<td><span id="Bringingsomeone"><span></td>
+		</tr>
+	</table></center>
+</div>
 </body>
+</html>
+
